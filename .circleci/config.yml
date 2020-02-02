@@ -1,0 +1,18 @@
+version: 2.1
+jobs:
+  build:
+    machine: 
+      image: circleci/classic:201808-01
+    steps:
+      - checkout
+      - run:
+          name: Prepare Kubernetes with microk8s
+          command: ./build/ci/install-deps
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+
+
